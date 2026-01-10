@@ -235,7 +235,7 @@ It’s useful for tweaking flare behavior during development.
 
 ### Q: Does incremental raycasting reduce accuracy?
 
-**A:** No — it only reduces when rays are processed, not how many.
+**A:** No it only reduces when rays are processed, not how many.
 Final occlusion result is the same, just achieved more efficiently.
 
 ---
@@ -246,4 +246,5 @@ Final occlusion result is the same, just achieved more efficiently.
 This prevents sudden jumps when FPS or distance changes rapidly.
 
 ---
+
 
