@@ -123,7 +123,7 @@ The system is designed to scale from small local lights to full cinematic sun fl
 
 ---
 
-### Q: What is RAY_PER_FRAME?
+### Q: What is `RAY_PER_FRAME`?
 **A:** It limits how many rays can be processed in a single frame.
 - Prevents heavy raycasts from stalling the renderer
 - Rays are continued in the next frame until completion
@@ -166,14 +166,14 @@ The system is designed to scale from small local lights to full cinematic sun fl
 
 ---
 
-### Q: What is MIN_RAY_RATIO?
+### Q: What is `MIN_RAY_RATIO`?
 **A:** The minimum ratio of rays to keep during LOD adaptive scaling.
 - Ensures that even at low FPS or far distances, at least this portion of rays are cast.
 - Value between 0 and 1 (e.g., 0.2 → 20% of NUMBER_OF_RAYCASTS).
 
 ---
 
-### Q: What is TARGET_FPS?
+### Q: What is `TARGET_FPS`?
 **A:** Desired framerate for adaptive LOD calculation.
 - System adjusts ray count to keep performance near this FPS.
 - Lower FPS than target → fewer rays → better performance.
@@ -181,7 +181,7 @@ The system is designed to scale from small local lights to full cinematic sun fl
 
 ---
 
-### Q: What is FPS_SAMPLE_COUNT?
+### Q: What is `FPS_SAMPLE_COUNT`?
 **A:** Number of frames to average for FPS calculation.
 - Higher value → smoother FPS estimation, slower reaction to sudden frame drops.
 - Lower value → reacts quickly, but FPS value fluctuates more.
@@ -246,3 +246,4 @@ Final occlusion result is the same, just achieved more efficiently.
 This prevents sudden jumps when FPS or distance changes rapidly.
 
 ---
+
