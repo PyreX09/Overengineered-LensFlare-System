@@ -24,13 +24,13 @@ To download LensFlare, go to the [**Releases**](https://github.com/PyreX09/LensF
 ✅ Built-in **LOD (Level of Detail)** support for optimization  
 ✅ **Raycast-based visibility detection** for realistic light occlusion  
 ✅ Simple API — create and destroy flares with just a few lines  
-✅ Designed for **Cameras, Attachments, or Parts**
-✅ Incremental Raycasting System
-✅ Adaptive Ray Budget (FPS-aware)
-✅ Per-frame Raycast Cost Limit
-✅ Smart Ray Offset Caching
-✅ Stable Occlusion & Alpha Blending
-✅ Sun Flare Priority Handling
+✅ Designed for **Cameras, Attachments, or Parts** 
+✅ Incremental Raycasting System 
+✅ Adaptive Ray Budget (FPS-aware) 
+✅ Per-frame Raycast Cost Limit 
+✅ Smart Ray Offset Caching 
+✅ Stable Occlusion & Alpha Blending 
+✅ Sun Flare Priority Handling 
 
 ---
 
@@ -246,5 +246,6 @@ Final occlusion result is the same, just achieved more efficiently.
 This prevents sudden jumps when FPS or distance changes rapidly.
 
 ---
+
 
 
