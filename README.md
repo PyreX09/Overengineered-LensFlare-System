@@ -25,27 +25,12 @@ To download LensFlare, go to the [**Releases**](https://github.com/PyreX09/LensF
 ✅ **Raycast-based visibility detection** for realistic light occlusion  
 ✅ Simple API — create and destroy flares with just a few lines  
 ✅ Designed for **Cameras, Attachments, or Parts**
-
----
-
-## 📊 Performance Comparison
-
-LensFlare Frame Time Across Versions
-
-This project includes performance profiling for LensFlare updates per frame across versions 1.2.1 to 1.2.3 using Roblox Studio MicroProfiler.
-
-### Average Frame Time per Version
-
-![Average LensFlare Frame Time](Images/Donut_Chart.png)
-- Donut Chart: Shows the average update time per frame for each version.
-	- Higher percentage slower performance
-	- Lower percentage faster performance
-
-![LensFlare FPS Profile](Images/Stacked_Line_Char.png)
-- Stacked Line Chart: Shows frame by frame timing for LensFlare updates across versions.
-
-	- X-axis: Frame Number
-	- Y-axis: Frame Time (ms)
+✅ Incremental Raycasting System
+✅ Adaptive Ray Budget (FPS-aware)
+✅ Per-frame Raycast Cost Limit
+✅ Smart Ray Offset Caching
+✅ Stable Occlusion & Alpha Blending
+✅ Sun Flare Priority Handling
 
 ---
 
@@ -92,6 +77,17 @@ Uses cached attributes and properties for minimal overhead.
 
 Built for first-person and cinematic scenes, tested up to 120 FPS, maybe.
 
+Raycasting is processed incrementally per frame, not all at once.
+This drastically reduces sudden FPS drops in complex scenes.
+
+Each flare maintains its own persistent ray state, allowing smooth transitions when ray count changes.
+
+Ray offsets and filters are cached aggressively to minimize table allocation and garbage collection.
+
+Fast occlusion mode automatically engages when FPS drops, and disengages smoothly to avoid flicker.
+
+The system is designed to scale from small local lights to full cinematic sun flares without manual tunin
+
 ---
 
 ## 👑 Special Thanks
@@ -124,6 +120,14 @@ Built for first-person and cinematic scenes, tested up to 120 FPS, maybe.
 
 ### Q: What does `RAYCAST_RADIUS` do?
 **A:** It spreads out the rays around the flare source. Doesn’t affect performance, just changes flare obstruction detection area.
+
+---
+
+### Q: What is RAY_PER_FRAME?
+**A:** It limits how many rays can be processed in a single frame.
+- Prevents heavy raycasts from stalling the renderer
+- Rays are continued in the next frame until completion
+- Lower value → smoother FPS, slower occlusion update
 
 ---
 
@@ -227,9 +231,18 @@ If `DEBUG_MODE = true`, the console prints:
 
 It’s useful for tweaking flare behavior during development.
 
+---
 
+### Q: Does incremental raycasting reduce accuracy?
 
+**A:** No — it only reduces when rays are processed, not how many.
+Final occlusion result is the same, just achieved more efficiently.
 
+---
 
+### Q: How does the system avoid flickering when ray count changes?
 
+**A:** Ray state is preserved across frames, and alpha blending is smoothed.
+This prevents sudden jumps when FPS or distance changes rapidly.
 
+---
