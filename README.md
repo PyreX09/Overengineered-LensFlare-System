@@ -107,6 +107,7 @@ The system is designed to scale from small local lights to full cinematic sun fl
    - `LensFlareLOD`
    - `LensFlareStrength`
    - `LensFlareStyle`
+   - 'LensFlareEnabled'
 3. You can **set the values according to the example model in Workspace**, or tweak them yourself as you like.
 
 ---
@@ -246,6 +247,7 @@ Final occlusion result is the same, just achieved more efficiently.
 This prevents sudden jumps when FPS or distance changes rapidly.
 
 ---
+
 
 
 
