@@ -51,7 +51,7 @@ script.Parent.Activated:Connect(function()
 		script.Parent.LensFlare:SetAttribute("LensFlareLOD", 1)
 		script.Parent.LensFlare:SetAttribute("LensFlareStrength", 0.75)
 		script.Parent.LensFlare:SetAttribute("LensFlareStyle", "Default")
-
+		script.Parent.LensFlare:SetAttribute("LensFlareEnabled", true)
 	else
 		on = false
 		script.Parent.Light.Shadow.Enabled = false
@@ -63,6 +63,7 @@ script.Parent.Activated:Connect(function()
 		script.Parent.LensFlare:SetAttribute("LensFlareLOD", 0)
 		script.Parent.LensFlare:SetAttribute("LensFlareStrength", 0)
 		script.Parent.LensFlare:SetAttribute("LensFlareStyle", "Default")
+		script.Parent.LensFlare:SetAttribute("LensFlareEnabled", true)
 	end
 end)
 ```
@@ -247,6 +248,7 @@ Final occlusion result is the same, just achieved more efficiently.
 This prevents sudden jumps when FPS or distance changes rapidly.
 
 ---
+
 
 
 
