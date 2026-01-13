@@ -47,10 +47,6 @@ script.Parent.Activated:Connect(function()
 		script.Parent.Light.Sound:Play()
 		script.Parent.Front.SurfaceLight.Enabled = true
 		
-		script.Parent.LensFlare:SetAttribute("LensFlareDistance", 100)
-		script.Parent.LensFlare:SetAttribute("LensFlareLOD", 1)
-		script.Parent.LensFlare:SetAttribute("LensFlareStrength", 0.75)
-		script.Parent.LensFlare:SetAttribute("LensFlareStyle", "Default")
 		script.Parent.LensFlare:SetAttribute("LensFlareEnabled", true)
 	else
 		on = false
@@ -58,12 +54,8 @@ script.Parent.Activated:Connect(function()
 		script.Parent.Light.Light.Enabled = false
 		script.Parent.Light.Sound2:Play()
 		script.Parent.Front.SurfaceLight.Enabled = false
-		
-		script.Parent.LensFlare:SetAttribute("LensFlareDistance", 0)
-		script.Parent.LensFlare:SetAttribute("LensFlareLOD", 0)
-		script.Parent.LensFlare:SetAttribute("LensFlareStrength", 0)
-		script.Parent.LensFlare:SetAttribute("LensFlareStyle", "Default")
-		script.Parent.LensFlare:SetAttribute("LensFlareEnabled", true)
+
+		script.Parent.LensFlare:SetAttribute("LensFlareEnabled", false)
 	end
 end)
 ```
@@ -248,6 +240,7 @@ Final occlusion result is the same, just achieved more efficiently.
 This prevents sudden jumps when FPS or distance changes rapidly.
 
 ---
+
 
 
 
