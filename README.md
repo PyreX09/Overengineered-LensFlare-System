@@ -6,7 +6,7 @@ This modified version adds new features, fixes, and performance improvements for
 ![Roblox](https://img.shields.io/badge/Roblox-Module-blue?logo=roblox)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Language](https://img.shields.io/badge/Lua-5.1%2B-yellow)
-![License](https://img.shields.io/badge/License-Fair--Use-lightgrey)
+[![License](https://img.shields.io/badge/license-Educational%20%26%20Non--Commercial-blue)](LICENSE)
 
 ---
 
@@ -240,6 +240,7 @@ Final occlusion result is the same, just achieved more efficiently.
 This prevents sudden jumps when FPS or distance changes rapidly.
 
 ---
+
 
 
 
