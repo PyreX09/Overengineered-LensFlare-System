@@ -1,7 +1,8 @@
 # 🌟 Overengineered LensFlare System
 
-A **customizable and optimized Lens Flare System** for Roblox, built upon the original work by [@gluGPU](https://devforum.roblox.com/u/glugpu/summary).  
-This modified version adds new features, fixes, and performance improvements for modern visual scripting and rendering.
+A **highly customizable and unnecessarily optimized LensFlare System** for Roblox, built upon the original work by [@gluGPU](https://devforum.roblox.com/u/glugpu/summary).  
+This version started as a **small modification…** and slowly turned into a **full-blown lens flare rendering system.**  
+Because apparently, **a simple flare wasn't complicated enough.**
 
 ![Roblox](https://img.shields.io/badge/Roblox-Module-blue?logo=roblox)
 ![Status](https://img.shields.io/badge/Status-Active-success)
@@ -10,10 +11,26 @@ This modified version adds new features, fixes, and performance improvements for
 
 ---
 
+## ⚠️ Warning
+
+This project may contain:
+- Excessive optimization
+- Questionable engineering decisions
+- Systems that absolutely did not need to exist
+All for the purpose of **making a light flare look slightly cooler.**
+
+If you came here for a **simple flare script,**  
+you are in the **wrong place.**
+
+---
+
+
 ## 📥 Installation
 
 To download LensFlare, go to the [**Releases**](https://github.com/PyreX09/LensFlare/releases) page.
+Download the module and drop it into **ReplicatedStorage.**
 
+Then prepare yourself mentally for the amount of features it contains.
 
 ---
 
@@ -32,9 +49,24 @@ To download LensFlare, go to the [**Releases**](https://github.com/PyreX09/LensF
 ✅ Stable Occlusion & Alpha Blending  
 ✅ Sun Flare Priority Handling  
 
+Additional things that probably didn't need to exist:  
+🚀 Dynamic ray scaling based on distance  
+🚀 Persistent ray state across frames  
+🚀 FPS sampling system  
+🚀 Fast occlusion fallback mode  
+🚀 Attribute caching to reduce garbage collection  
+  
+Yes.  
+  
+All of this.  
+  
+For a **lensflare.**  
+
 ---
 
 ## 🚀 Usage Example
+
+Surprisingly, using it is still simple for tool.
 
 **Server:**
 ```lua
@@ -107,44 +139,98 @@ end)
 
 ## 🧠 Developer Notes
 
-Each flare runs on a render step bind, optimized to reduce redundant updates.
+Each flare runs on its own **RenderStep bind**, carefully optimized to avoid redundant updates.  
 
-Uses cached attributes and properties for minimal overhead.
+Raycasting is processed **incrementally per frame**, instead of firing everything at once.  
+This prevents large ray bursts from causing sudden frame drops.  
 
-Built for first-person and cinematic scenes, tested up to 120 FPS, maybe.
+Each flare also maintains its own **persistent ray state**, allowing smooth transitions when:
 
-Raycasting is processed incrementally per frame, not all at once.
-This drastically reduces sudden FPS drops in complex scenes.
+- ray counts change
+- FPS fluctuates
+- distance-based LOD kicks in
 
-Each flare maintains its own persistent ray state, allowing smooth transitions when ray count changes.
+Ray offsets and filters are **aggressively cached** to minimize table allocation and garbage collection.
 
-Ray offsets and filters are cached aggressively to minimize table allocation and garbage collection.
+Fast occlusion mode automatically activates when FPS drops and **deactivates smoothly** to avoid visual flicker.
 
-Fast occlusion mode automatically engages when FPS drops, and disengages smoothly to avoid flicker.
-
-The system is designed to scale from small local lights to full cinematic sun flares without manual tunin
+In other words:  
+> the system does a lot of work  
+> so your flare can look **slightly better**
 
 ---
 
 ## 👑 Special Thanks
 
-[@gluGPU](https://devforum.roblox.com/u/glugpu/summary) : Creator of [LensFlare](https://create.roblox.com/store/asset/89532403908041/Lens-Flare-System) a system that I have spent countless hours modifying.
+[@gluGPU](https://devforum.roblox.com/u/glugpu/summary) : Creator of the original [LensFlare](https://create.roblox.com/store/asset/89532403908041/Lens-Flare-System)  
+Without that system, this project would not exist.
+
+Or maybe it would.  
+
+But it would probably be **even more chaotic.**
 
 ---
 
 ## ❓ Q&A (Extended)
 
-### Q: How do I add a light to myself?
-**A:** Do it like this 👇
+### Q: Why does this system exist?
+**A:** Good question.
 
-1. **Add the Tag:** `LensFlare` to the object you want to have the flare effect.  
-2. **Add the following Attributes:**
-   - `LensFlareDistance`
-   - `LensFlareLOD`
-   - `LensFlareStrength`
-   - `LensFlareStyle`
-   - `LensFlareEnabled`
-3. You can **set the values according to the example model in Workspace**, or tweak them yourself as you like.
+Originally, it started as a **small tweak** to the original LensFlare system.  
+
+Then one thing led to another.  
+
+And now you're reading documentation for a **lens flare framework.**  
+
+---
+
+### Q: Why does this system exist?
+**A:** Good question.
+
+Originally, it started as a **small tweak** to the original LensFlare system.  
+
+Then one thing led to another.  
+
+And now you're reading documentation for a **lens flare framework.**  
+
+---
+
+### Q: Is this overkill?
+**A:** Absolutely.  
+
+---
+
+### Q: Can I still use it normally?
+**A:** Yes.  
+
+Despite the absurd amount of internal systems, the API remains intentionally simple.  
+
+Create flare → enable flare → destroy flare.
+
+---
+
+### Q: Why so many raycasts?
+**A:** Because **realistic light occlusion looks cool.**  
+
+Also because **I wanted to see how far I could push it.**   
+
+---
+
+### Q: Does incremental raycasting reduce accuracy?
+**A:** No. 
+
+It only spreads the computation across frames.  
+
+The final occlusion result remains identical.
+
+---
+
+### Q: Does incremental raycasting reduce accuracy?
+**A:** Yes. 
+
+The system dynamically adjusts ray budgets and LOD to maintain performance.  
+
+Even if FPS drops, the flare will **degrade gracefully instead of exploding your frame time.**
 
 ---
 
@@ -219,9 +305,9 @@ The system is designed to scale from small local lights to full cinematic sun fl
 ---
 
 ### Q: What is `FPS_SAMPLE_COUNT`?
-**A:** Number of frames to average for FPS calculation.
-- Higher value → smoother FPS estimation, slower reaction to sudden frame drops.
-- Lower value → reacts quickly, but FPS value fluctuates more.
+**A:** Number of frames to average for FPS calculation.  
+- Higher value → smoother FPS estimation, slower reaction to sudden frame drops.  
+- Lower value → reacts quickly, but FPS value fluctuates more.  
 
 ---
 
@@ -263,36 +349,38 @@ If `DEBUG_MODE = true`, the console prints:
 - Number of rays hitting  
 - Distance to camera  
 - LOD recalculations  
-- Re-emission events  
-- FPS
+- Re-emission events   
+- FPS  
 
-It’s useful for tweaking flare behavior during development.
+It’s useful for tweaking flare behavior during development.  
 
 ---
 
 ### Q: Does incremental raycasting reduce accuracy?
 
-**A:** No it only reduces when rays are processed, not how many.
-Final occlusion result is the same, just achieved more efficiently.
+**A:** No it only reduces when rays are processed, not how many.  
+Final occlusion result is the same, just achieved more efficiently.  
 
 ---
 
 ### Q: How does the system avoid flickering when ray count changes?
 
-**A:** Ray state is preserved across frames, and alpha blending is smoothed.
-This prevents sudden jumps when FPS or distance changes rapidly.
+**A:** Ray state is preserved across frames, and alpha blending is smoothed.  
+This prevents sudden jumps when FPS or distance changes rapidly.  
 
 ---
 
+## 👑 Final Note
 
+If you're wondering why this project exists:	
 
+The answer is simple.
 
+> **I got bored.**
 
+And apparently that was enough to accidentally build  
+a **lens flare rendering system.**
 
-
-
-
-
-
+---
 
 
