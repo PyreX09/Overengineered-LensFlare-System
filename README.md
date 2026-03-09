@@ -208,18 +208,9 @@ Also because **I wanted to see how far I could push it.**
 ### Q: Does incremental raycasting reduce accuracy?
 **A:** No. 
 
-It only spreads the computation across frames.  
+Unless your definition of accuracy is  
 
-The final occlusion result remains identical.
-
----
-
-### Q: Does incremental raycasting reduce accuracy?
-**A:** Yes. 
-
-The system dynamically adjusts ray budgets and LOD to maintain performance.  
-
-Even if FPS drops, the flare will **degrade gracefully instead of exploding your frame time.**
+"everything must happen in one frame".
 
 ---
 
