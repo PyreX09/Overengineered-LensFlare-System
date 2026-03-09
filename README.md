@@ -184,17 +184,6 @@ And now you're reading documentation for a **lens flare framework.**
 
 ---
 
-### Q: Why does this system exist?
-**A:** Good question.
-
-Originally, it started as a **small tweak** to the original LensFlare system.  
-
-Then one thing led to another.  
-
-And now you're reading documentation for a **lens flare framework.**  
-
----
-
 ### Q: Is this overkill?
 **A:** Absolutely.  
 
